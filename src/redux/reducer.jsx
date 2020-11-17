@@ -4,25 +4,14 @@ import {
 } from './actions';
 
 const INITIAL_STATE = {
-  wishList: [],
+  wishList: ["car", "bike"],
 };
 
 // Complete the three cases below
 const reducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case ADD_ITEM:
-      return {
-        wishList: ,
-      };
-    case DELETE_ITEM:
-      return {
-        wishList: ,
-      };
-    default:
-      return {
-        wishList: ,
-      };
-  }
+  return {
+    wishList: state.wishList,
+  };
 };
 
 export default reducer;
