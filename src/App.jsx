@@ -6,13 +6,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: ""  };
+    this.handleAddItem =this.handleAddItem.bind(this);
   }
 
   updateInput(input) {
-    this.setState({ input  });
-  };
+    this.setState({ input });
+  }
 
-  handleAddItem = () => {
+  handleAddItem() {
     this.props.addItem(this.state.input)
 
     this.setState({input: ""})

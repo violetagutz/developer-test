@@ -9,6 +9,10 @@ const INITIAL_STATE = {
 
 // Complete the three cases below
 const reducer = (state = INITIAL_STATE, action) => {
+  if (action.type === ADD_ITEM) {
+    // add new item to current state
+    state.wishList.push(action.payload);
+  }
   return {
     wishList: state.wishList,
   };
