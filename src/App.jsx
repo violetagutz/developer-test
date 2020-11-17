@@ -6,7 +6,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: ""  };
-    this.handleAddItem =this.handleAddItem.bind(this);
+    this.handleAddItem = this.handleAddItem.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
   }
 
   updateInput(input) {
@@ -19,12 +20,19 @@ class App extends React.Component {
     this.setState({input: ""})
   }
 
+  handleDeleteItem(e) {
+    const item = e.target.textContent
+
+    this.props.deleteItem(item)
+  }
+
   render() {
     const wishList = this.props.wishList;
 
     const listItems = wishList.map((item, index) => {
+
       return (
-        <li key={index}>{item}</li>
+        <li key={index} onClick={this.handleDeleteItem}>{item}</li>
       )
     })
 
