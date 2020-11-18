@@ -1,6 +1,7 @@
 import {
   ADD_ITEM,
   DELETE_ITEM,
+  DELETE_ALL_ITEMS,
 } from './actions';
 
 const INITIAL_STATE = {
@@ -9,31 +10,41 @@ const INITIAL_STATE = {
 
 // Complete the three cases below
 const reducer = (state = INITIAL_STATE, action) => {
-  if (action.type === ADD_ITEM) {
 
-    // add new item to current state
-    state.wishList.push(action.payload);
+  switch(action.type) {
+    case ADD_ITEM:
+      // add new item to current state
+      state.wishList.push(action.payload);
 
-  } else if (action.type === DELETE_ITEM) {
-  // create new array
-    // get one index of the array of an specific item is being clicked
-    const indexOfItem = state.wishList.indexOf(action.payload)
-
-    // use map to return a new array
-    const listItems = state.wishList.map((item, index) => {
-      if (index !== indexOfItem) {
-        return item
+      return {
+        wishList: state.wishList,
       }
-    });
+      break;
+    case DELETE_ITEM:
+      // get one index of the array of an specific item is being clicked
+      const indexOfItem = state.wishList.indexOf(action.payload)
 
-    return {
-      wishList: listItems,
-    };
+      // use map to return a new array
+      const listItems = state.wishList.map((item, index) => {
+        if (index !== indexOfItem) {
+          return item
+        }
+      });
 
-  }
-
-  return {
-    wishList: state.wishList,
+      return {
+        wishList: listItems,
+      };
+      break;
+    case DELETE_ALL_ITEMS:
+      return {
+        wishList : [],
+      }
+      break;
+    default:
+      return {
+        wishList: state.wishList,
+      };
+      break;
   };
 };
 

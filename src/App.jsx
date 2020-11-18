@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem, deleteItem } from './redux/actions';
-import { ListGroup, Card, Container, Button } from 'react-bootstrap';
+import { addItem, deleteItem, deleteAllItems } from './redux/actions';
+import { Container, Button } from 'react-bootstrap';
+
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -22,6 +23,7 @@ class App extends React.Component {
     const inputText = this.state.input
 
     const wishList = this.props.wishList;
+
     const indexOfItem = wishList.indexOf(inputText);
 
     if (indexOfItem !== -1) {
@@ -52,11 +54,14 @@ class App extends React.Component {
     const wishList = this.props.wishList;
 
     if (wishList == "") {
-      alert("WishList can't be empty")
+      alert("Wish list can't be empty")
     } else {
-    alert('Wish list submitted to Santa!');
-    e.preventDefault();
+      alert('Wish list submitted to Santa!');
     }
+
+    this.props.deleteAllItems(wishList)
+
+    e.preventDefault();
   }
 
   render() {
@@ -100,7 +105,7 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = { addItem, deleteItem }
+const mapDispatchToProps = { addItem, deleteItem, deleteAllItems }
 
 export default connect(
   mapStateToProps,
