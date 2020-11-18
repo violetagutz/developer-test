@@ -14,8 +14,35 @@ code {
 
 ul {
   list-style-type: none;
+  color: blue;
+  font-weight: bold;
 }
 
 h1 {
+  font-weight: bold;
   color: grey;
+}
+
+
+.card.text-center {
+  border-style: solid;
+  border-width: medium;
+  border-color: blue;
+}
+
+.add-item {
+  margin: 20px;
+}
+
+.submit-list {
+  margin: 20px;
+}
+
+.input {
+  margin: 22px;
+  text-align: center;
+}
+
+.container {
+  margin: 80px;
 }

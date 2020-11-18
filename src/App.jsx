@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addItem, deleteItem, deleteAllItems } from './redux/actions';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -76,23 +76,31 @@ class App extends React.Component {
 
     return(
       <div>
-        <Container fluid>
-          <h1> Wish List </h1>
-          <ul id="list-items">
-            {listItems}
-          </ul>
-          <input
-            onChange={e => this.updateInput(e.target.value)}
-            value={this.state.input}
-          />
-          <Button variant="primary" className="add-item"
-            onClick={this.handleAddItem}>
-            {"Add Todo"}
-          </Button>
-          <Button variant="success" className="submit-list"
-            onClick={this.handleSubmit}>
-            Submit
-          </Button>
+        <Container className="container">
+          <Row>
+            <Col md={{ span: 6, offset: 3 }}>
+              <Card>
+                <Card.Body className="card text-center">
+                  <h1> Wish List </h1>
+                  <ul id="list-items">
+                    {listItems}
+                  </ul>
+                  <input className="input"
+                    onChange={e => this.updateInput(e.target.value)}
+                    value={this.state.input}
+                  />
+                  <Button variant="primary" className="add-item"
+                    onClick={this.handleAddItem}>
+                    {"Add Todo"}
+                  </Button>
+                  <Button variant="success" className="submit-list"
+                    onClick={this.handleSubmit}>
+                    Submit
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         </Container>
       </div>
     );
