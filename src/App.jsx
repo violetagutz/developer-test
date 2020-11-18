@@ -20,10 +20,8 @@ class App extends React.Component {
 
   handleAddItem() {
 
-    const inputText = this.state.input
-
+    const inputText = this.state.input;
     const wishList = this.props.wishList;
-
     const indexOfItem = wishList.indexOf(inputText);
 
     if (indexOfItem !== -1) {
@@ -32,25 +30,23 @@ class App extends React.Component {
       return false;
     }
 
-
     if (inputText == "") {
       alert("Please write something.");
       return false;
     }
 
-    this.props.addItem(inputText)
-
-    this.setState({input: ""})
+    this.props.addItem(inputText);
+    this.setState({input: ""});
   }
 
   handleDeleteItem(e) {
-    const item = e.target.textContent
-
-    this.props.deleteItem(item)
+    const item = e.target.textContent;
+    this.props.deleteItem(item);
   }
 
   handleSubmit(e) {
 
+    e.preventDefault();
     const wishList = this.props.wishList;
 
     if (wishList == "") {
@@ -60,49 +56,46 @@ class App extends React.Component {
     }
 
     this.props.deleteAllItems(wishList)
-
-    e.preventDefault();
   }
 
   render() {
     const wishList = this.props.wishList;
 
     const listItems = wishList.map((item, index) => {
-
       return (
         <li key={index} onClick={this.handleDeleteItem}>{item}</li>
       )
     })
 
     return(
-      <div>
-        <Container className="container">
-          <Row>
-            <Col md={{ span: 6, offset: 3 }}>
-              <Card>
-                <Card.Body className="card text-center">
-                  <h1> Wish List </h1>
-                  <ul id="list-items">
+      <Container>
+        <Row>
+          <Col className="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <Card className="card-container">
+              <Card.Body className="card card-body">
+                <h1> Wish List </h1>
+                <div className="list-items">
+                  <ul>
                     {listItems}
                   </ul>
-                  <input className="input"
-                    onChange={e => this.updateInput(e.target.value)}
-                    value={this.state.input}
-                  />
-                  <Button variant="primary" className="add-item"
-                    onClick={this.handleAddItem}>
-                    {"Add Todo"}
-                  </Button>
-                  <Button variant="success" className="submit-list"
-                    onClick={this.handleSubmit}>
-                    Submit
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+                </div>
+                <input className="input"
+                  onChange={e => this.updateInput(e.target.value)}
+                  value={this.state.input}
+                />
+                <Button variant="primary" className="add-item"
+                  onClick={this.handleAddItem}>
+                  {"Add Item"}
+                </Button>
+                <Button variant="success" className="submit-list"
+                  onClick={this.handleSubmit}>
+                  Submit List
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

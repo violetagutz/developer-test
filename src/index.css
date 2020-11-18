@@ -14,20 +14,17 @@ code {
 
 ul {
   list-style-type: none;
-  color: blue;
   font-weight: bold;
 }
 
 h1 {
   font-weight: bold;
-  color: grey;
+  text-align: center;
 }
 
 
-.card.text-center {
-  border-style: solid;
-  border-width: medium;
-  border-color: blue;
+.card.card-body {
+  background-color: #ffc3c3;
 }
 
 .add-item {
@@ -43,6 +40,33 @@ h1 {
   text-align: center;
 }
 
+
 .container {
-  margin: 80px;
+  margin-top: 80px;
+}
+
+.list-items {
+  background-color: #fff;
+  min-height: 250px;
+  border: 1px solid grey;
+  margin: 25px;
+}
+
+.card-container {
+  margin: 0 auto;
+  width: 400px;
+}
+
+@media only screen and (max-width: 420px) {
+  .card-container {
+    width: 350px;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  .card-container {
+    width: 300px;
+  }
+
 }
