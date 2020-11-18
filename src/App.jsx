@@ -73,7 +73,7 @@ class App extends React.Component {
           <Col className="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
             <Card className="card-container">
               <Card.Body className="card card-body">
-                <h1> Wish List </h1>
+                <h4>MY WISHLIST</h4>
                 <div className="list-items">
                   <ul>
                     {listItems}
@@ -83,11 +83,11 @@ class App extends React.Component {
                   onChange={e => this.updateInput(e.target.value)}
                   value={this.state.input}
                 />
-                <Button variant="primary" className="add-item"
+                <Button className="add-item"
                   onClick={this.handleAddItem}>
                   {"Add Item"}
                 </Button>
-                <Button variant="success" className="submit-list"
+                <Button className="submit-list"
                   onClick={this.handleSubmit}>
                   Submit List
                 </Button>
